@@ -1,0 +1,365 @@
+*{ margin:0;padding:0;font-family: "Adobe 黑体 Std R";}
+/*去除浏览器默认样式*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font: normal 100% Helvetica, Arial, sans-serif;
+    font-family: 微软雅黑;
+    zoom: 80%;
+    height:auto;
+    background-color: rgb(242,242,242);
+}
+/*导航栏部分*/
+.nav{
+    display: inline-block;
+    height: 97.92px;
+    font-size: 20px;
+    z-index:100;
+    width:100%;
+    /*position:fixed;*/
+    background:white;
+    font-family: "Adobe 黑体 Std R";
+    box-shadow: 2px -8px 10px -9px #5a6268 inset;
+}
+
+.logo{
+    position: relative;
+    display: inline-block;
+    height:100%;
+    width:15%;
+    float: left;
+    margin-left: 10%;
+}
+
+.logo img{
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-top:6%;
+}
+
+.right {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    height: 100%;
+    width:25%;
+    float: right;
+    margin-right: 10%;
+}
+
+.right li{
+    position: relative;
+    display: inline-block;
+    text-align: right;
+    float: right;
+    width:20%;
+}
+
+.right li a{
+    position: relative;
+    display: block;
+    color:#6c6c6c;
+    margin: 30px 0;
+    text-decoration: none;
+}
+
+.right li a:hover .two-img{
+    display: block;
+}
+.two-img{
+    display: none;
+}
+
+.right li a:hover:not(.active){
+    color:#2493D3;
+    text-decoration: none;
+}
+
+
+.center{
+    position: relative;
+    display: inline-block;
+    height:100%;
+    width:40%;  /*这里是中间部分占导航栏总长的比例*/
+    margin:0 auto;
+}
+
+.center ul{
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    float: left;
+    height:100%;
+    width:100%;
+}
+
+.center li{
+    position: relative;
+    display: inline-block;
+    float:left;
+    margin:0 20px;
+}
+
+.center li a{
+    position: relative;
+    display: block;
+    color:#6c6c6c;
+    text-align: center;
+    padding: 30px 0;
+    text-decoration: none;
+}
+.center li a:hover{
+    position: relative;
+    display: inline-block;
+    color:#2493D3;
+    border-bottom: solid;
+    border-color: #2493D3;
+    text-decoration: none;
+}
+
+.active{
+    color:#2493D3;
+    border-bottom: solid;
+    border-color: #2493D3;
+    text-decoration: none;
+}
+
+/******************************************************************主体部分**************************************************/
+.contain{
+    width:80%;
+    margin:30px auto;
+    height:auto;
+}
+
+.content-left{
+    width:70%;
+    height:auto;
+    margin:0 2% 30px 0;
+    float: left;
+    background-color: white;
+    padding:30px;
+    font-size: 24px;
+}
+.content-left form label{
+    float: left;
+    font-size: 24px;
+}
+.content-left form select{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.content-left form input{
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.content-left form textarea{
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.img-div{
+    float: left;
+    line-height: 1;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.upload{
+    margin:30px 0 0 20px;
+    display: inline-block;
+    width:228px;
+    height:186px;
+    background-image: url("../images/上传作品.png");
+    background-size: 100% 100%;
+}
+
+.upload:hover{
+    background-image: url("../images/上传作品_hover.png");
+}
+
+.content-left form button{
+    width:100%;
+    height:auto;
+    margin:80px 0 40px;
+    font-size: 24px;
+}
+/********************************************************************/
+.content-right{
+    width:28%;
+    height:auto;
+    float: right;
+}
+
+.right-bottom{
+    background-color: #e4e4e4;
+    width:100%;
+    padding:20px;
+}
+.list-head {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #5c5c5c;
+}
+.list-head p{
+    font-size: 24px;
+}
+
+.list-content{
+    width:100%;
+    height:50px;
+    color: #d02800;
+    font-size: 24px;
+    padding:10px 0;
+    border-bottom: 2px dashed #999999;
+}
+
+
+/*-------------------页尾--------------------*/
+.foot{
+    z-index: 100;
+    display: inline-block;
+    margin-top: 40px;
+    width: 100%;
+    height: 480px;
+    color: #c4c4c4;
+}
+.on_foot{
+    width:100%;
+    height:60%;
+    padding-top:1%;
+    overflow: auto;
+    background-color: rgb(42,42,42);
+}
+.foot-left{
+    width:50%;
+    hieght:100%;
+    float:left;
+    border-right: 1px solid #bfbfbf;
+}
+.foot-left-title{
+    font-weight: bold;
+    margin:3% auto 3% 80%;
+}
+.foot-left ul{
+    list-style: none;
+    color: #c4c4c4;
+    margin:0 13% 2% auto;
+    float: right;
+}
+.foot-left ul li{
+    margin-top: 2%;
+}
+.foot-left ul li a{
+    color: #c4c4c4;
+}
+.foot-left ul li a:hover{
+    color:#01AAED;
+    text-decoration: none;
+}
+
+.foot-right{
+    width:50%;
+    hieght:100%;
+    float:left;
+}
+.foot-right-title{
+    font-weight: bold;
+    margin:3% auto 2% 13%;
+}
+.foot-right ul{
+    list-style: none;
+    color: #c4c4c4;
+    margin:0 auto 2% 13%;
+    float: left;
+}
+.foot-right ul li{
+    margin-top: 2%;
+}
+.foot-right ul li a{
+    color: #c4c4c4;
+}
+.foot-right ul li a:hover{
+    color:#01AAED;
+    text-decoration: none;
+}
+.on_foot a:hover{
+    color:#7ab6f4;
+    text-decoration: none;
+}
+
+.low_foot a{
+    padding: 0;
+    color: #c4c4c4;
+    font-size: 14px;
+}
+.foot_part2{
+    position: relative;
+    display: inline-block;
+    height: 73%;
+    color: #c4c4c4;
+    top: 6px;/*在chorme中没有对其*/
+    margin: 0 0 0 7%;
+}
+.foot_part2 ul{
+    list-style: none;
+}
+.foot_part2 ul li{
+    width:auto;
+}
+.foot_part2 ul li a{
+    margin: 10% 0 0 2%;
+    font-size: 13px;
+}
+
+.foot_part2 p{
+    margin: 0 0 20% 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.low_foot{
+    position:relative;
+    display: inline-block;
+    height: 40%;
+    width: 100%;
+    top: -1%;
+    background: rgb(14, 14, 14);
+    border: none;
+}
+
+.low_foot ul{
+    list-style: none;
+    margin: 6% 0 0 25%;
+}
+.low_foot li{
+    display: inline-block;
+    width: 6%;
+    height: 8%;
+    margin: 0;
+}
+.low_foot a{
+    padding: 0;
+    font-size: 14px;
+}
+.low_foot a:hover{
+    color: #7ab6f4;
+    text-decoration: none;
+}
+.v_line2{
+    text-align: center;
+    width:15%;
+    border: solid #707070;
+    border-width: 0 1px 0 0;
+    padding:3px;
+    margin-left:5px;
+}

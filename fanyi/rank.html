@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>榜单</title>
+    <link href="css/rank.css" rel="stylesheet" type="text/css">
+    <script language ="javascript" src="js/rank.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: rgb(242,242,242);" onload="onLoad()">
+<div class="nav">
+    <div class="logo">
+        <img src="images/LOGO.png" style="height:60px;">
+    </div>
+
+    <div class="center">
+        <ul>
+            <!--<li><a href="#" title="首页">首页</a></li>
+            <li><a href="#" title="成功案例">成功案例</a> </li>
+            <li><a href="#" title="企业任务">企业任务</a> </li>
+            <li><a href="#" title="作品">作品</a> </li>
+            <li><a href="#" title="榜单"class="active" style="color: #2493D3">榜单</a></li>-->
+            <li><a id="go_main"        href="./index.html" title="首页">首页</a></li>
+            <li><a id="go_success"     href="./success.html" title="成功案例">成功案例</a></li>
+            <li><a id="go_task"        href="./viewtask.html" title="企业任务">企业任务</a></li>
+            <li><a id="go_masterpiece" href="./masterpiece.html" title="作品">作品</a></li>
+            <li><a id="go_rank"        class="active" href="./rank.html" style="color: #2493D3" title="榜单">榜单</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <li><a id="minemine" href="#" title="我的">我的</a> </li>
+        <li><a               href="#" title="手机APP">手机APP<div class="two-img"><img src="images/手机APP二维码.png"></div></a></li>
+        <li><a id="movemove" href="#" title="企业入口">设计师入口</a></li>
+    </div>
+</div>
+
+<!------------------------------------------主体部分------------------------------------>
+<div class="contain" style="height: auto;">
+    <div class="box">
+        <ul>
+            <li><label><div class="aa">任务分类：</div></label></li>
+            <li><label><input type="radio" name="sort" value="1" onclick="ok(this,1)"><div class="aa">宣传榜</div></label></li>
+            <li><label><input type="radio" name="sort" value="2" onclick="ok(this,2)"><div class="aa">客户满意度榜</div></label></li>
+            <li><label><input type="radio" name="sort" value="3" onclick="ok(this,3)"><div class="aa">优胜榜</div></label></li>
+        </ul>
+    </div>
+    <script>
+        var radio = document.querySelectorAll('input[name="sort"]');//选中所有同名单选框
+        radio[0].setAttribute("data-checked","yes");//修改属性，设为标识
+        radio[0].parentNode.childNodes[1].setAttribute('class',"bb");//修改类名
+        function ok (check,j) {
+            for(var i=0;i<radio.length;i++){//遍历同名单选框
+                if(radio[i]==check){//如果点击的是当前单选框
+                    radio[i].setAttribute("data-checked","yes");//修改属性，设为标识
+                    radio[i].parentNode.childNodes[1].setAttribute('class',"bb");//修改类名
+                }else if(radio[i].getAttribute('data-checked')){
+                    radio[i].removeAttribute('data-checked');
+                    radio[i].parentNode.childNodes[1].setAttribute('class',"aa");
+                }
+            }
+            if (j==1){
+                clickRankOne();
+            }
+            if (j == 2){
+                clickRankTwo();
+            }
+        }
+    </script>
+    <div id="free_area">
+
+    </div>
+    <!--<div class="advertise-list">-->
+        <!--<div class="alnumb">-->
+            <!--1-->
+        <!--</div>-->
+        <!--<div class="alld">-->
+            <!--<h4 style="color: #585858;margin: 35px;">那夜干了一半</h4>-->
+            <!--<h5 style="margin: 35px;"><span href="#" style="color: #afb0aa;margin-right: 20px;">转发数：151 </span>  <span href="#" style="color: #e66f35;margin-right: 20px;">获赞数：233 </span> </h5>-->
+            <!--<input type="button" value="关注">-->
+            <!--<input type="button" value="给他留言" style="background-color: #fff;color:#797979;border: 1px #797979 solid">-->
+        <!--</div>-->
+        <!--<div class="alid">-->
+            <!--<img src="images/citi.png">-->
+            <!--<img src="images/citi.png">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="advertise-list">-->
+        <!--<div class="advertise-list lboxxer">-->
+            <!--<div class="alnumb">-->
+                <!--2-->
+            <!--</div>-->
+            <!--<div class="alld">-->
+                <!--<h4 style="color: #585858;margin: 35px;">火华</h4>-->
+                <!--<h5 style="margin: 35px;"><a href="#" style="color: #afb0aa;margin-right: 20px;">转发数：216 </a>  <a href="#" style="color: #e66f35;margin-right: 20px;">获赞数：158 </a> </h5>-->
+                <!--<input type="button" value="关注">-->
+                <!--<input type="button" value="给他留言" style="background-color: #fff;color:#797979;border: 1px #797979 solid">-->
+            <!--</div>-->
+            <!--<div class="alid">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="advertise-list">-->
+        <!--<div class="advertise-list lboxxer">-->
+            <!--<div class="alnumb">-->
+                <!--3-->
+            <!--</div>-->
+            <!--<div class="alld">-->
+                <!--<h4 style="color: #585858;margin: 35px;">回忆湛蓝般天空</h4>-->
+                <!--<h5 style="margin: 35px;"><a href="#" style="color: #afb0aa;margin-right: 20px;">转发数：930 </a>  <a href="#" style="color: #e66f35;margin-right: 20px;">获赞数：154 </a> </h5>-->
+                <!--<input type="button" value="关注">-->
+                <!--<input type="button" value="给他留言" style="background-color: #fff;color:#797979;border: 1px #797979 solid">-->
+            <!--</div>-->
+            <!--<div class="alid">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="advertise-list">-->
+        <!--<div class="advertise-list lboxxer">-->
+            <!--<div class="alnumb">-->
+                <!--4-->
+            <!--</div>-->
+            <!--<div class="alld">-->
+                <!--<h4 style="color: #585858;margin: 35px;">头条君</h4>-->
+                <!--<h5 style="margin: 35px;"><a href="#" style="color: #afb0aa;margin-right: 20px;">转发数：616 </a>  <a href="#" style="color: #e66f35;margin-right: 20px;">获赞数：3622 </a> </h5>-->
+                <!--<input type="button" value="关注">-->
+                <!--<input type="button" value="给他留言" style="background-color: #fff;color:#797979;border: 1px #797979 solid">-->
+            <!--</div>-->
+            <!--<div class="alid">-->
+                <!--<img src="images/citi.png">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="advertise-list">-->
+        <!--<div class="advertise-list lboxxer">-->
+            <!--<div class="alnumb">-->
+                <!--5-->
+            <!--</div>-->
+            <!--<div class="alld">-->
+                <!--<h4 style="color: #585858;margin: 35px;">阿豪</h4>-->
+                <!--<h5 style="margin: 35px;"><a href="#" style="color: #afb0aa;margin-right: 20px;">转发数：1251 </a>  <a href="#" style="color: #e66f35;margin-right: 20px;">获赞数：2333 </a> </h5>-->
+                <!--<input type="button" value="关注">-->
+                <!--<input type="button" value="给他留言" style="background-color: #fff;color:#797979;border: 1px #797979 solid">-->
+            <!--</div>-->
+            <!--<div class="alid">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+                <!--<img src="images/citi.png">-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+</body>
+</html>

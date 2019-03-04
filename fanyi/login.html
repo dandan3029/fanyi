@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link href="css/login.css" type="text/css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/layer/layer.js" type="text/javascript"></script>
+    <script src="js/login.js" type="text/javascript"></script>
+
+</head>
+<body onload="onLoad()">
+<div class="nav">
+    <div class="logo">
+        <img src="images/LOGO.png" style="height:60px;">
+    </div>
+
+    <div class="center">
+        <ul>
+            <li><a href="./index.html" title="首页">首页</a></li>
+            <li><a href="./success.html" title="成功案例">成功案例</a> </li>
+            <li><a href="./viewtask.html" title="企业任务">企业任务</a> </li>
+            <li><a href="./masterpiece.html" title="作品">作品</a> </li>
+            <li><a href="./rank.html" title="榜单">榜单</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <li><a href="./loginE.html" title="企业入口">企业入口</a></li>
+        <li><img src="images/mobilephone2.png"></li>
+        <li><a href="#" title="APP">APP</a></li>
+        <li><a href="./register.html" title="注册" class="h_log_in1">注册</a> </li>
+        <li><span>|</span></li>
+        <li><a href="#" title="登录" class="h_log_in2">登录</a></li>
+    </div>
+</div>
+<div style="_zoom: 80%;"> <!-- fuchuanpu added -->
+<div class="main_body">
+    <div class="main_content">
+        <div class="bg_img"></div>
+        <form action='POST' class="f_login">
+            <input type="text" class="f_input1" id="username" placeholder="&nbsp;邮箱/手机号">
+            <input type="password" class="f_input2" id="password" placeholder="&nbsp;密码">
+            <div class="checkbox-wrap">
+                <input type="checkbox" value="guangpan" name="choose" id="remember_me">
+                <p style="color: red;position: absolute;align-content: center" class="checkbox-wrap" id="error_info"></p>
+                <label for="remember_me">记住密码</label>
+            </div>
+            <a href="#" class="find_password">找回密码</a><br>
+            <button type="button" class="btn_login" onclick="onLoginClicked()">登陆</button><br>
+            <a href="register.html" class="register">没有账号？立即&nbsp;<p>注册</p></a>
+            <div class="other_login">
+                <span class="line"></span>
+                <span class="others">第三方账号登陆</span>
+                <span class="line"></span>
+            </div>
+            <div class="others_img">
+                <a href="#" class = 'login_qq'></a>
+                <a href="#" class="login_wechat"></a>
+                <a href="#" class="login_sina"></a>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="foot">
+    <div class="on_foot">
+        <div class="foot_part1">
+            <p class="foot_title1">我是设计师</p>
+            <ul>
+                <li><a href="#">认证流程</a></li>
+                <li><a href="#">邦得等级</a></li>
+                <li><a href="#">上传作品</a></li>
+                <li><a href="#">酬金分配</a></li>
+            </ul>
+        </div>
+        <div class="v_line"></div>
+        <div class="foot_part2">
+            <p class="foot_title2">我是企业</p>
+            <ul>
+                <li><a href="#">任务发布</a></li>
+                <li><a href="#">付款方式</a></li>
+                <li><a href="#">匹配机制</a></li>
+                <li><a href="#">广告签约</a></li>
+                <li><a href="#">平台案例</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="low_foot">
+        <ul>
+            <li class="v_line2"><a href="#">关于我们</a></li>
+            <li class="v_line2"><a href="#">发展历程</a></li>
+            <li class="v_line2"><a href="#">人才招募</a></li>
+            <li class="v_line2"><a href="#">联系我们</a></li>
+            <li class="v_line2"><a href="#">服务规则</a></li>
+            <li class="v_line2"><a href="#">商标版权</a></li>
+            <li class="v_line2"><a href="#">常见问题</a></li>
+            <li class="v_line2"><a href="#">网站地图</a></li>
+            <li class="v_line2"><a href="#">设计师指南</a></li>
+            <li><a href="#">友情连接</a></li>
+        </ul>
+    </div>
+</div>
+</div> <!-- zoom -->
+</body>
+</html>

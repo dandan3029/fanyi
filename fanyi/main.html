@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>img to base64</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<img id="showImg"/>
+<input type="file" onchange="changeFile(event);" />
+</body>
+</html>
+<script type="text/javascript">
+    function changeFile(event) {
+        file = event.target.files[0];
+        var a = new FileReader();
+        a.onload = function (e) {
+            var base64Str = e.target.result;//获取base64
+            // base64Str = base64Str.substring(base64Str.indexOf(",")+1,base64Str.length);
+            console.log(base64Str);
+            // 下面是测试得到的base64串能否正常使用：
+            document.getElementById('showImg').src = base64Str;
+        }
+        a.readAsDataURL(file);
+    }
+</script>

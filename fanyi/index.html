@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>泛意，你专属的广告创意平台</title>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="js/index.js" type="text/javascript"></script>
+    <script src="js/layer/layer.js" type="text/javascript"></script>
+</head>
+<body onload="onPageLoad()">
+<!-------------------------------------------------导航栏------------------------------------------------------>
+<div class="nav">
+    <div class="logo">
+        <img src="images/LOGO.png" style="height:60px;">
+    </div>
+
+    <div class="center">
+        <ul>
+            <li><a                     href="#" title="首页" class="active" style="color:#2493D3;">首页</a></li>
+            <li><a id="go_success"     href="./success.html" title="成功案例">成功案例</a> </li>
+            <li><a id="go_task"        href="./viewtask.html" title="企业任务">企业任务</a> </li>
+            <li><a id="go_masterpiece" href="./viewm.html" title="作品">作品</a> </li>
+            <li><a id="go_rank"        href="./rank.html" title="榜单">榜单</a></li>
+            <!-- 登陆后显示个人中心 -->
+            <li><a href="#" title="个人中心" id="h_self" style="visibility: hidden" onclick="goSelfCenter()">个人中心</a></li>
+        </ul>
+
+    </div>
+    <div class="right">
+        <li><a href="./loginE.html" title="企业入口">企业入口</a></li>
+        <!--<li><img src="images/mobilephone2.png"></li>-->
+        <li style="float: left"><a href="#" title="APP">手机APP<div class="two-img"><img src="images/手机APP二维码.png"></div>
+        </a></li>
+        <!--<li><a href="#" title="手机APP">手机APP-->
+            <!--<div class="two-img"><img src="images/手机APP二维码.png"></div>-->
+        <!--</a></li>-->
+        <li><a href="register.html" title="注册" class="h_log_in1">注册</a> </li>
+        <li><span>|</span></li>
+        <li><a href="#" title="登录" id="b_login" class="h_log_in2" onclick="onLoginClicked()">登录</a></li>
+    </div>
+</div>
+<div style="zoom: 80%"> <!--fcp tianjia-->
+<!--------------------------------------------------------主体部分------------------------------------------------->
+<div class="contain" style="height: auto;">
+    <!--轮播图-->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- 指示符 -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <!--<li data-target="#demo" data-slide-to="2"></li>-->
+        </ul>
+        <!-- 轮播图片 -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <!--<img src="http://static.runoob.com/images/mix/img_fjords_wide.jpg">-->
+                <img src="images/海报1.jpg">
+            </div>
+            <div class="carousel-item">
+                <!--<img src="http://static.runoob.com/images/mix/img_nature_wide.jpg">-->
+                <img src="images/海报2.png">
+            </div>
+            <!--<div class="carousel-item">-->
+            <!--<img src="http://static.runoob.com/images/mix/img_mountains_wide.jpg">-->
+            <!--</div>-->
+        </div>
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+
+    <!--产品介绍标题-->
+    <div class="production" align="center">
+        <p align="center">WHAT IS 泛意</p>
+    </div>
+    <!--第一横排-->
+    <div class="row" style="border-bottom: 5px solid #8d8d8d">
+        <div class="col" style="border-right:5px solid #8d8d8d">
+            <div class="vertical-left" >平台架构</div>
+            <div class="article-left">
+                <p>“泛意”——基于区块链、图像识别技术与阶段筛选模式的招募、设计、宣传一体化的广告创意平台，分为web端和手机移动端，包含了基于区块链技术的侵权预警系统。
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="vertical-right">关于我们</div>
+            <div class="article-right">
+                <p>泛意（Fanyi），专注于创意招募与作品设计宣传，采用需求发布-广告设计-作品审核-版权转让-作品宣传等覆盖广告制作与宣传全流程的服务模式，在需求方与设计者之间直接建立沟通的渠道，是一个基于区块链维权、图像识别防伪与阶段筛选模式的广告创新平台。</p>
+            </div>
+        </div>
+        <div class="col">
+            <img src="images/彩色马.png" style="width:100%;">
+        </div>
+    </div>
+
+    <!--第二横排-->
+    <div class="row">
+        <div class="col">
+            <img src="images/彩色格子.png" style="width:100%;">
+        </div>
+        <div class="col" style="border-right:5px solid #8d8d8d">
+            <div class="vertical-left" >模块优势</div>
+            <div class="article-left">
+                <p>利用企业与设计者的需求互补，形成一条需求共享的开放式生态链<br>
+                    通过设计者与宣传者的配合，弥补优质作品缺乏宣传渠道的缺陷</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="vertical-right">技术保障</div>
+            <div class="article-right">
+                <p>区块链分块记录，让线上版权转让成为可能<br>
+                    图像识别技术辨别真伪，维护平台用户的合法权益</p>
+            </div>
+        </div>
+    </div>
+    <!--副导航栏-->
+    <nav class="vice-nav">
+        <ul>
+            <li><span>任务类型：</span></li>
+            <li><a href="#" title="产品广告">产品广告</a></li>
+            <li><a href="#" title="品牌广告">品牌广告</a></li>
+            <li><a href="#" title="观念广告">观念广告</a></li>
+            <li><a href="#" title="公益广告">公益广告</a></li>
+        </ul>
+    </nav>
+    <!--产品块-->
+    <div class="row">
+        <div class="col">
+            <div class="box" id="box1" onclick="onCardClicked(1)">
+                <img id="i1" src="images/图片1.png">
+                <h6 id="t1">全新智能机器人，引领智能生活</h6>
+                <p>任务酬金 <span id="m1"> ¥50000</span></p>
+                <div align="center"><button id="b1">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v1">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l1">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j1">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box2" onclick="onCardClicked(2)">
+                <img id="i2" src="images/图片2.png">
+                <h6 id="t2">外文名著套装，征集包装设计</h6>
+                <p>任务酬金 <span id="m2"> ¥50000</span></p>
+                <div align="center"><button id="b2" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v2">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l2">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j2">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box3" onclick="onCardClicked(3)">
+                <img id="i3" src="images/图片3.png">
+                <h6 id="t3">厨房一体化设计，做菜也时尚</h6>
+                <p>任务酬金 <span id="m3"> ¥50000</span></p>
+                <div align="center"><button id="b3">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v3">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l3">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j3">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box4" onclick="onCardClicked(4)">
+                <img id="i4" src="images/图片4.png">
+                <h6 id="t4">高端不锈钢锅具，呵护您的健康</h6>
+                <p>任务酬金 <span id="m4"> ¥50000</span></p>
+                <div align="center"><button id="b4" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v4">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l4">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j4">48</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--第二行产品块-->
+    <div class="row">
+        <div class="col">
+            <div class="box" id="box5" onclick="onCardClicked(5)">
+                <img id="i5" src="images/图片1.png">
+                <h6 id="t5">全新智能机器人，引领智能生活</h6>
+                <p>任务酬金 <span id="m5"> ¥50000</span></p>
+                <div align="center"><button id="b5">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v5">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l5">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j5">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box6" onclick="onCardClicked(6)">
+                <img id="i6" src="images/图片2.png">
+                <h6 id="t6">外文名著套装，征集包装设计</h6>
+                <p>任务酬金 <span id="m6"> ¥50000</span></p>
+                <div align="center"><button id="b6" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v6">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l6">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j6">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box7" onclick="onCardClicked(7)">
+                <img id="i7" src="images/图片3.png">
+                <h6 id="t7">厨房一体化设计，做菜也时尚</h6>
+                <p>任务酬金 <span id="m7"> ¥50000</span></p>
+                <div align="center"><button id="b7">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v7">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l7">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j7">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box8" onclick="onCardClicked(8)">
+                <img id="i8" src="images/图片4.png">
+                <h6 id="t8">高端不锈钢锅具，呵护您的健康</h6>
+                <p>任务酬金 <span id="m8"> ¥50000</span></p>
+                <div align="center"><button id="b8" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v8">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l8">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j8">48</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--第三行产品块-->
+    <div class="row">
+        <div class="col">
+            <div class="box" id="box9" onclick="onCardClicked(9)">
+                <img id="i9" src="images/图片1.png">
+                <h6 id="t9">全新智能机器人，引领智能生活</h6>
+                <p>任务酬金 <span id="m9"> ¥50000</span></p>
+                <div align="center"><button id="b9">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v9">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l9">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j9">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box10" onclick="onCardClicked(10)">
+                <img id="i10" src="images/图片2.png">
+                <h6 id="t10">外文名著套装，征集包装设计</h6>
+                <p>任务酬金 <span id="m10"> ¥50000</span></p>
+                <div align="center"><button id="b10" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v10">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l10">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j10">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box11" onclick="onCardClicked(11)">
+                <img id="i11" src="images/图片3.png">
+                <h6 id="t11">厨房一体化设计，做菜也时尚</h6>
+                <p>任务酬金 <span id="m11"> ¥50000</span></p>
+                <div align="center"><button id="b11">我要报名</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v11">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l11">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j11">48</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="box" id="box12" onclick="onCardClicked(12)">
+                <img id="i12" src="images/图片4.png">
+                <h6 id="t12">高端不锈钢锅具，呵护您的健康</h6>
+                <p>任务酬金 <span id="m12"> ¥50000</span></p>
+                <div align="center"><button id="b12" style="background-color: #7ab6f4">设计中</button></div>
+                </br>
+                <div class="zan" align="left"><a>
+                    <img src="images/browse.png">
+                    <p id="v12">337</p></a>
+                </div>
+                <div class="zan" align="center"><a>
+                    <img src="images/message.png">
+                    <p id="l12">48</p></a>
+                </div>
+                <div class="zan" align="right"><a>
+                    <img src="images/group.png">
+                    <p id="j12">48</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------------------------------------------------页脚-------------------------------------------------------><div class="foot">
+        <div class="foot">
+            <div class="on_foot">
+                <div class="foot-left">
+                    <p class="foot-left-title">我是设计师</p>
+                    <ul>
+                        <li><a href="#">认证流程</a></li>
+                        <li><a href="#">邦得等级</a></li>
+                        <li><a href="#">上传作品</a></li>
+                        <li><a href="#">酬金分配</a></li>
+                        <li><a href="#">      </a></li>
+                    </ul>
+                </div>
+                <div class="foot-right">
+                    <p class="foot-right-title">我是企业</p>
+                    <ul>
+                        <li><a href="#">任务发布</a></li>
+                        <li><a href="#">付款方式</a></li>
+                        <li><a href="#">匹配机制</a></li>
+                        <li><a href="#">广告签约</a></li>
+                        <li><a href="#">平台案例</a></li>
+                        <li><a href="#">      </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="low_foot">
+                <ul>
+                    <li class="v_line2"><a href="#">关于我们</a></li>
+                    <li class="v_line2"><a href="#">发展历程</a></li>
+                    <li class="v_line2"><a href="#">人才招募</a></li>
+                    <li class="v_line2"><a href="#">联系我们</a></li>
+                    <li class="v_line2"><a href="#">服务规则</a></li>
+                    <li class="v_line2"><a href="#">商标版权</a></li>
+                    <li class="v_line2"><a href="#">常见问题</a></li>
+                    <li class="v_line2"><a href="#">网站地图</a></li>
+                    <li class="v_line2"><a href="#">设计师指南</a></li>
+                    <li><a href="#">友情连接</a></li>
+                </ul>
+            </div>
+        </div>
+</div><!--zoom-->
+</div>
+</body>
+</html>

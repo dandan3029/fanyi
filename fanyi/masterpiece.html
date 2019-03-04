@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>作品详情</title>
+
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+    <script src="./js/layui/layui.js" type="text/javascript"></script>
+    <script src="./js/masterpiece.js" type="text/javascript"></script>
+
+    <link href="css/masterpiece.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <link href="//vjs.zencdn.net/7.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/7.0/video.min.js"></script>
+    <script>window.HELP_IMPROVE_VIDEOJS = false;</script>
+
+    <script>
+        // layui.use(['layer'], function () {
+        //     var layer = layui.layer;
+        //     layer.msg('作品加载中...', {
+        //         icon: 16
+        //         ,shade: 0.01
+        //     });
+        // });
+
+        // layer.load("加载中请稍候...");
+        m_id = getUrlParamCN("m_id");
+
+        var dusername = getUrlParamCN("designer_username");
+        var eusername = getUrlParamCN("enterprise_username");
+
+        if (designer_username == null){
+            username = eusername;
+        }
+        if (enterprise_username == null){
+            username = dusername;
+        }
+
+        //username = getUrlParamCN("username");
+
+        // ajax to server
+        // get masterpiece property
+        var res0 = null;
+        var json0 = {};
+        json0.id = m_id;
+        var JsonStr0 = JSON.stringify(json0);
+        $.ajax({
+            async:false,
+            type:"post",
+            contentType: "application/json; charset=utf-8",
+            url:"http://" + serverPath + "/masterpiece_get_by_id.action",
+            data:JsonStr0,
+            dataType:"json",
+
+            success:function(data){
+                // console.log(data);
+                res0 = data;
+            },
+            error:function(data){
+                layer.msg("网络异常...")
+            }
+        });
+
+        task_id = res0.task_id;
+        designer_username = res0.designer_username;
+
+        // get task property
+        var res = null;
+        var json = {};
+        json.id = task_id;
+        var JsonStr = JSON.stringify(json);
+        $.ajax({
+            async:false,
+            type:"post",
+            contentType: "application/json; charset=utf-8",
+            url:"http://" + serverPath + "/task_get_all_property_by_id.action",
+            data:JsonStr,
+            dataType:"json",
+
+            success:function(data){
+                // console.log(data);
+                res = data;
+            },
+            error:function(data){
+                layer.msg("网络异常...")
+            }
+        });
+
+        // get property of enterprise
+        var json1 = {};
+        var result0 = null;
+        json1.username = res.enterprise_username;
+        var JsonStr1 = JSON.stringify(json1);
+        $.ajax({
+            async:false,
+            type:"post",
+            contentType: "application/json; charset=utf-8",
+            url:"http://" + serverPath + "/enterprise_get_info.action",
+            data:JsonStr1,
+            dataType:"json",
+
+            success:function(data){
+                result0 = data;
+                enterprise_name = data.name;
+                enterprise_username = data.username;
+            },
+            error:function(data){
+                layer.msg("网络异常...")
+            }
+        });
+
+        // get all property of designer
+        var json2 = {};
+        json2.username = designer_username;
+        var JsonStr2 = JSON.stringify(json2);
+        var result1 = null;
+        $.ajax({
+            async:false,
+            type:"post",
+            contentType: "application/json; charset=utf-8",
+            url:"http://" + serverPath + "/designer_property_get.action",
+            data:JsonStr2,
+            dataType:"json",
+
+            success:function(data){
+                result1 = data;
+            },
+            error:function(data){
+                layer.msg("网络连接异常");
+            }
+        })
+
+        // get all of the data
+        designer_data = result1;
+        enterprise_data = result0;
+        task_data = res;
+        masterpiece_data = res0;
+
+        console.log(designer_data);
+        console.log(enterprise_data);
+        console.log(task_data);
+        console.log(masterpiece_data);
+
+        layui.use(['layer'], function () {
+            var layer = layui.layer;
+            layer.closeAll("loading");
+        });
+    </script>
+</head>
+<body style="background-color: rgb(242,242,242)" onload="onLoad()">
+
+<div class="nav">
+    <div class="logo">
+        <img src="images/LOGO.png" style="height:60px;">
+    </div>
+
+    <div class="center">
+        <ul>
+            <li><a id="go_main"        href="#" title="首页">首页</a></li>
+            <li><a id="go_success"     href="#" title="成功案例">成功案例</a> </li>
+            <li><a id="go_task"        href="#" title="企业任务">企业任务</a> </li>
+            <li><a id="go_masterpiece" class="active" href="#" title="作品" style="color: #2493D3">作品</a> </li>
+            <li><a id="go_rank"        href="#" title="榜单">榜单</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <li><a id="minemine" href="#" title="我的">我的</a> </li>
+        <li><a               href="#" title="手机APP">手机APP<div class="two-img"><img src="images/手机APP二维码.png"></div></a></li>
+        <li><a id="movemove" href="#" title="企业入口">设计师入口</a></li>
+    </div>
+</div>
+
+<!-----------------------------------------------主体部分------------------------------------------------>
+<div class="contain">
+    <div class="content-left">
+        <h1 align="center" id="title">Q萌猪保温杯</h1><hr/>
+        <!--视频链接部分-->
+        <div class="upload-video" style="width:100%;height:800px; display: none" id="play_area">
+                <!--上传后的视频在这里显示，src中为视频地址-->
+                <video
+                        style="width:100%;height: 100%"
+                        id="player"
+                        class="video-js"
+                        controls
+                        autoplay
+                        preload="auto"
+                        poster="./images/citi.png"
+                        data-setup='{}'>
+                    <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                    <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm">
+                    <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">
+                            supports HTML5 video
+                        </a>
+                    </p>
+                </video>
+        </div>
+        <!--<h2>作品简介：</h2>-->
+        <blockquote class="layui-elem-quote" style="margin-top: 50px">作品简介：</blockquote>
+
+        <p id="main_text"></p>
+
+        <!-- add img here -->
+        <blockquote class="layui-elem-quote" style="margin-top: 50px" id="img_head">图片介绍：</blockquote>
+        <div id="free_area2">
+            <!--<div style="display: flex">-->
+                <!--<img src="images/citi.png" style="width: 50%;height: 50%;margin: 0 auto;">-->
+            <!--</div>-->
+            <!--<div style="display: flex">-->
+                <!--<p style="margin: 0 auto; font-size: medium">图片介绍信息1</p>-->
+            <!--</div><br><br>-->
+        </div>
+
+
+        <div class="share">
+            <h3 style="font-size: 26px;color: #666666;display: inline-block">分享到：</h3>
+            <a href="#" ><img src="images/腾讯QQ.png"></a>
+            <a href="#" ><img src="images/微信.png"></a>
+            <a href="#" ><img src="images/微博.png"></a>
+            <a href="#" ><img src="images/腾讯微博.png"></a>
+
+            <button style="outline: none;" id="save" onclick="onSave()">☆  收藏</button>
+            <button style="outline: none;" id="like" onclick="onLike()">赞  <span id="num_like">3</span></button><br>
+
+            <img src="images/打赏.png" data-toggle="modal" data-target="#myModal" style="width:100px;height:auto;">
+            <p>赏金￥<span>0</span></p>
+        </div>
+    </div>
+
+    <div class="content-right">
+        <div class="right-top">
+            <h4><strong>需求主题：</strong></h4>
+            <h3><strong id="task_info">祥瑞食品新品广告</strong></h3>
+            <h4><strong>需求描述：</strong></h4>
+            <p id="task_describe">色彩艳丽但不花哨；强调营养性高、价格低廉、种类繁多；适当动画化。</p>
+            <h4><strong>需求发起方：</strong></h4>
+            <div class="employee">
+                <img src="images/头像.png">
+                <div class="employee-info">
+                    <h3><strong id="enterprise_name">祥瑞食品有限公司</strong></h3>
+                    <h6 id="enterprise_username">29381738492</h6>
+                </div>
+            </div>
+        </div>
+        <div class="right-top">
+            <div class="employee">
+                <img src="images/头像.png">
+                <div class="employee-info">
+                    <h3><strong id="designer_name">Kenwd81</strong></h3>
+                    <h6 id="designer_username">29381738492</h6>
+                </div>
+                <div class="box-input">
+                    <input type="button" value="给他留言">
+                    <input type="button" value="关注" style="margin:40px 15% 40px 5%;">
+                </div>
+                <div class="data-line">
+                    <div class="data-box">
+                        <h3><strong><span id="designer_count1">6</span></strong></h3>
+                        <h5>作品</h5>
+                    </div>
+                    <div class="data-box">
+                        <h3><strong><span id="designer_count2">217</span></strong></h3>
+                        <h5>脑力值</h5>
+                    </div>
+                    <div class="data-box" style="border-width: 0;">
+                        <h3><strong><span id="designer_count3">188</span></strong></h3>
+                        <h5>人气</h5>
+                    </div>
+                </div><hr/>
+                <div class="contact-way">
+                    <h5>联系方式：</h5>
+                    <h6>QQ:<span id="qq">176640939872</span></h6>
+                    <h6>微信：<span id="weixin">未设置</span></h6>
+                    <h6>手机：<span id="phone">176640939872</span></h6>
+                </div><hr/>
+                <div class="evaluation">
+                    <h5>好评：<span><strong id="designer_count4">190</strong></span></h5>
+                    <h5>浏览量：<span><strong id="designer_count5">268</strong></span></h5>
+                </div>
+            </div>
+        </div>
+        <div class="right-bottom">
+            <div class="list-head">
+                <p style="float: left">相关推荐</p>
+                <p style="float: right;">更多></p>
+            </div>
+        </div>
+        <div class="right-bottom" style="background-color: white;margin-bottom: 30px;">
+            <div class="list-content">
+                <a href="#"><span>Q萌猪保温杯</span></a>
+            </div>
+            <div class="list-content">
+                <a href="#"><span>调音台设计</span></a>
+            </div>
+            <div class="list-content">
+                <a href="#"><span>组合移动电源设计</span></a>
+            </div>
+            <div class="list-content" style="border: none;">
+                <a href="#"><span>Q萌猪保温杯</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">打赏</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <label><input type="radio" name="reward" value="1" onclick="ok(this)" style="display: none;"><div class="aa"><span>1元赏</span></div></label>
+                <label><input type="radio" name="reward" value="2" onclick="ok(this)" style="display: none;"><div class="aa"><span>3元赏</span></div></label>
+                <label><input type="radio" name="reward" value="3" onclick="ok(this)" style="display: none;"><div class="aa"><span>5元赏</span></div></label>
+            </div>
+
+            <script>
+                var radio = document.querySelectorAll('input[name="reward"]');//选中所有同名单选框
+                radio[0].setAttribute("data-checked","yes");//修改属性，设为标识
+                radio[0].parentNode.childNodes[1].setAttribute('class',"bb");//修改类名
+                function ok (check) {
+                    for(var i=0;i<radio.length;i++){//遍历同名单选框
+                        if(radio[i]==check){//如果点击的是当前单选框
+                            radio[i].setAttribute("data-checked","yes");//修改属性，设为标识
+                            radio[i].parentNode.childNodes[1].setAttribute('class',"bb");//修改类名
+                        }else if(radio[i].getAttribute('data-checked')){
+                            radio[i].removeAttribute('data-checked');
+                            radio[i].parentNode.childNodes[1].setAttribute('class',"aa");
+                        }
+                    }
+                }
+            </script>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #2493D3;border-color: #2493D3">确认</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!---------------------------------------------------页脚------------------------------------------------------->
+<div class="foot">
+    <div class="on_foot">
+        <div class="foot-left">
+            <p class="foot-left-title">我是设计师</p>
+            <ul>
+                <li><a href="#">认证流程</a></li>
+                <li><a href="#">邦得等级</a></li>
+                <li><a href="#">上传作品</a></li>
+                <li><a href="#">酬金分配</a></li>
+                <li><a href="#">      </a></li>
+            </ul>
+        </div>
+        <div class="foot-right">
+            <p class="foot-right-title">我是企业</p>
+            <ul>
+                <li><a href="#">任务发布</a></li>
+                <li><a href="#">付款方式</a></li>
+                <li><a href="#">匹配机制</a></li>
+                <li><a href="#">广告签约</a></li>
+                <li><a href="#">平台案例</a></li>
+                <li><a href="#">      </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="low_foot">
+        <ul>
+            <li class="v_line2"><a href="#">关于我们</a></li>
+            <li class="v_line2"><a href="#">发展历程</a></li>
+            <li class="v_line2"><a href="#">人才招募</a></li>
+            <li class="v_line2"><a href="#">联系我们</a></li>
+            <li class="v_line2"><a href="#">服务规则</a></li>
+            <li class="v_line2"><a href="#">商标版权</a></li>
+            <li class="v_line2"><a href="#">常见问题</a></li>
+            <li class="v_line2"><a href="#">网站地图</a></li>
+            <li class="v_line2"><a href="#">设计师指南</a></li>
+            <li><a href="#">友情连接</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    var dusername = getUrlParamCN("designer_username");
+    var eusername = getUrlParamCN("enterprise_username");
+    if (dusername != null){
+        document.getElementById("go_main").href = "./index.html?designer_username=" +      dusername;
+        document.getElementById("go_success").href = "./success.html?designer_username=" + dusername;
+        document.getElementById("go_task").href = "./viewtask.html?designer_username=" +   dusername;
+        document.getElementById("go_rank").href = "./rank.html?designer_username=" +       dusername;
+        document.getElementById("go_masterpiece").href = "./viewm.html?designer_username="+dusername;
+
+        document.getElementById("movemove").href = "./loginE.html";
+        document.getElementById("movemove").innerText = "企业入口";
+        document.getElementById("minemine").href = "./selfcenter.html?username=" + dusername;
+    }
+    if (eusername != null){
+        document.getElementById("go_main").href = "./index.html?enterprise_username=" +      eusername;
+        document.getElementById("go_success").href = "./success.html?enterprise_username=" + eusername;
+        document.getElementById("go_task").href = "./newtask.html?enterprise_username=" +   eusername;
+        document.getElementById("go_task").innerText = "发布任务";
+        document.getElementById("go_rank").href = "./rank.html?enterprise_username=" +       eusername;
+        document.getElementById("go_masterpiece").href = "./viewm.html?enterprise_username="+eusername;
+
+        document.getElementById("movemove").href = "./login.html";
+        document.getElementById("movemove").innerText = "用户入口";
+        document.getElementById("minemine").href = "./selfcenterE.html?username=" + eusername;
+    }
+</script>
+
+</body>
+</html>

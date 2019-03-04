@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择账号</title>
+    <script src="./js/layui/layui.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+</head>
+<body onload="onload()">
+<div align="center" style="top:50px">
+    <img src="images/citi.png" style="left: 50%;width: 40%;width: 40%">
+</div>
+<div id="info_text" align="center" style="font-size: 18px;">
+    <p><span class="layui-badge-dot" style="vertical-align:center;alignment: center;color: red"></span>
+        来自花旗银行:</p>
+
+    <p id="id_info">
+        用户SandBoxUser1登陆成功</p>
+    <br>
+    <p><span class="layui-badge-dot" style="background: #053070"></span>
+        请您择一个账户完成绑定</p>
+    <p><span class="layui-badge-dot" style="background: #053070"></span>
+        泛意平台的支付与收款均通过此账</p>
+    <br>
+</div>
+
+<div align="center">
+    <form class="layui-form" action="" style="alignment: center">
+        <div class="layui-form-item" align="center" style="width: 80%">
+            <select name="accounts" id="sel" lay-verify="required">
+                <option value=""></option>
+                <!-- added here<option value=""></option> -->
+            </select>
+        </div>
+    </form>
+    <div class="layui-form-item" align="center">
+        <button class="layui-btn"
+                onclick="is_ok()"  style="background: #053070">
+            立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+</div>
+
+<script>
+    var accounts = null;
+    var username = null;
+    var display = null;
+    var serverPath = "localhost:8080";
+
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            return false;
+        });
+    });
+
+    function onload() {
+        var str = getUrlParamCN('str');
+        var res = str.split(',');
+
+        var str1 = getUrlParamCN('acc');
+        accounts = str1.split(',');
+
+        var str2 = getUrlParamCN('disp');
+        display = str2.split(',');
+
+        username = getUrlParamCN('username');
+
+        var select = document.getElementById("sel");
+        for (j = 0; j < res.length ;j++){
+            select.options.add(new Option(res[j] , j));
+        }
+    }
+
+    function is_ok() {
+        layui.use(['jquery'], function(){
+            var $ = jQuery = layui.$;
+            // 你可以在下面的 js 代码中使用你熟悉的 $, jQuery
+            var value = document.getElementById("sel").value;
+            console.log(accounts[value]);
+            var json = {};
+            json.username = username;
+            json.citi_num = accounts[value];
+            json.citi_display = display[value];
+            var JsonStr = JSON.stringify(json);
+            $.ajax({
+                async:true,
+                type:"post",
+                contentType: "application/json; charset=utf-8",
+                url:"http://" + serverPath + "/designer_bind_citi_acc.action",
+                data:JsonStr,
+                dataType:"json",
+
+                success:function(data){
+                    console.log(data);
+                    if (data.res_code == 0){
+                        layer.alert("花旗银行账户绑定成功",{
+                            icon : 6,
+                            yes: function () {
+                                parent.layer.closeAll('iframe');
+                            }
+                        });
+                    } else {
+                        // todo
+                    }
+
+                },
+                error:function(data){
+                    console.log(432);
+                    layer.msg("网络连接异常");
+                }
+            });
+        });
+
+        layer.closeAll();
+    }
+
+
+    function getUrlParamCN(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = decodeURI(window.location.search).substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+
+</script>
+
+</body>
+</html>

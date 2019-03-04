@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link href="css/selfcenterE.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+    <script src="./js/layui/layui.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!--<script src="js/layer/layer.js" type="text/javascript"></script>-->
+    <script src="js/selfcenterE.js" type="text/javascript"></script>
+
+
+</head>
+<body style="background-color: rgb(242,242,242);height: 100%;width: 100%" onload="onLoad()">
+<!-------------------------------------------------导航栏------------------------------------------------------>
+<div class="nav">
+    <div class="logo">
+        <img src="images/LOGO.png" style="height:60px;">
+    </div>
+
+    <div class="center">
+        <ul>
+            <li><a id="go_main"        href="#" title="首页">首页</a></li>
+            <li><a id="go_success"     href="#" title="成功案例">成功案例</a></li>
+            <li><a id="go_task"        href="#" title="企业任务">企业任务</a></li>
+            <li><a id="go_masterpiece" href="#" title="作品">作品</a></li>
+            <li><a id="go_rank"        href="#" title="榜单">榜单</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <li><a id="minemine" href="#  " title="我的" style="color: #2493D3">我的</a></li>
+        <li><a href="#" title="手机APP">手机APP
+            <div class="two-img"><img src="images/手机APP二维码.png"></div>
+        </a></li>
+        <li><a id="movemove" href="./login.html" title="企业入口">设计师入口</a></li>
+    </div>
+</div>
+
+<!-------------------------------------------主体部分------------------------------>
+<div style="zoom: 80%"> <!--fcp tianjia-->
+<div class="contain">
+    <!--标题部分-->
+    <div class="left-box">
+        <div class="title">
+            <div class="box" style="border-bottom: 3px solid #4ecf79">
+                <span style="color:#4ecf79;">&nbsp;&nbsp;用户基本信息</span>
+            </div>
+
+        </div>
+        <!--表单部分-->
+        <form action="post" class="f-register">
+            <ul>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">账号</div>
+                        <div class="item-input">
+                            <input type="text" id="username" placeholder="请输入手机号码"
+                                   disabled="disabled" value="18525525028" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">邮箱</div>
+                        <div class="item-input">
+                            <input type="text" id="email" placeholder="要升级为设计师必须填写此项"
+                                   disabled="disabled" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">企业名</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="要升级为设计师必须填写此项" disabled="disabled"
+                                   value="" id="name" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">介绍</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="还没有介绍" disabled="disabled"
+                                   id="info" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">所在地域</div>
+                        <div class="item-input">
+                            <input type="text" id="realm" placeholder="所在地域"
+                                   disabled="disabled" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </form>
+        <input type="button" class="register-button" id="b1" value="修改个人资料" onclick="onChange1()">
+
+        <div class="titleD">
+            <div class="box" style="border-bottom: 3px solid #4ecf79">
+                <span style="color:#4ecf79;">修改密码</span>
+            </div>
+        </div>
+        <form action="post" class="f-register">
+            <ul>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">新密码</div>
+                        <div class="item-input">
+                            <input type="password" placeholder="请输入新密码"
+                                   id="psd1" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">确认新密码</div>
+                        <div class="item-input">
+                            <input type="password" placeholder="重新输入以确认"
+                                   id="psd2" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <input type="button" class="register-button" value="提交修改" onclick="onChange4()">
+    </div>
+
+
+    <!--<div class="right-box">
+        <img src="images/我有创意.png" style="height:100%;">
+    </div>-->
+
+<!------------------------------------------- 第三方平台 ------------------------------>
+</div>
+<div class="containA">
+    <div class="left-box">
+        <div class="titleA">
+            <div class="box" style="border-bottom: 3px solid #4ecf79">
+                <span style="color:#4ecf79;">&nbsp;&nbsp;账户统计信息</span>
+            </div>
+
+        </div>
+        <form action="post" class="f-register">
+            <ul>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">发布任务数</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="count1" value="0" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">结束任务数</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="count2" value="0" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">初选阶段</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="count3" value="0" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">宣传阶段</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="count4" value="0" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">等待评分</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="count5" value="0" name="mobile">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<!-------------------------------------------花旗银行账户------------------------------>
+<div class="containC">
+    <div class="left-box">
+        <div class="titleC">
+            <div class="box" style="border-bottom: 3px solid #053070">
+                <span style="color:#053070;">&nbsp;&nbsp;花旗银行账户绑定</span>
+                <img style="width: 20%;height: 120%;bottom: auto;float: right;" src="images/citi.png">
+            </div>
+        </div>
+        <form action="post" class="f-register">
+            <ul>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">银行账号</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="还没有绑定" disabled="disabled"
+                                   id="citi_A" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-inner">
+                        <div class="item-title">默认账户</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="" disabled="disabled"
+                                   id="citi_C" value="" name="mobile">
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <input type="button" id="b7" class="register-buttonC" value="绑定／更改绑定" onclick="onChange5()">
+        </form>
+    </div>
+</div>
+<div class="containD">
+    <h2 style="margin: 30px;font-size: 40px;alignment: center;color: #1E9FFF;text-align: center">我发布的任务</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>任务名</th>
+            <th>企业打分占比</th>
+            <th>报名人数</th>
+            <th>奖励金额</th>
+            <th>总浏览量</th>
+            <th>总转发量</th>
+            <th>任务状态</th>
+        </tr>
+        </thead>
+        <tbody id="free_area">
+        <!--<tr ondblclick="onSubViewOpen(1)">
+                <td>祥瑞食品新品广告</td>
+                <td>1天前</td>
+                <td>3周</td>
+                <td>产品广告</td>
+                <td>￥5000</td>
+                <td>好</td>
+            </tr>-->
+
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>
